@@ -1,0 +1,32 @@
+<div class="profileBrief">
+  <div class="ui-g">
+    <div class="ui-g-2" (click)="toDetail()">
+      <div class="avatar">
+        avatar is here
+      </div>
+    </div>
+    <div class="ui-g-1" (click)="toDetail()">
+    </div>
+    <div class="ui-g-7" (click)="toDetail()">
+      <div class="flex-row">
+        {{user.nickname}}
+      </div>
+      <div class="flex-row">
+        {{user.email}}
+      </div>
+    </div>
+    <div class="ui-g-2">
+      <div class="inv-button" *ngIf="invitedStatus===null">
+        <button>Add Contact</button>
+      </div>
+      <div class="inv-button" *ngIf="invitedStatus==='waitList'">
+        <button (click)="addRemoveUserToMission()">Invite</button>
+      </div>
+      <div class="inv-button" *ngIf="invitedStatus==='invited'">
+        <button (click)="addRemoveUserToMission()">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+

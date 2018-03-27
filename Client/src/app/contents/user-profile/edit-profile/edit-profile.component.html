@@ -1,0 +1,107 @@
+<div class="editButton">
+  <button class="button" (click)="showChildModal()">Edit</button>
+</div>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">My Profile</h4>
+        <button type="button" class="close pull-right" (click)="hideChildModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>Nick Name:</h5>
+              </div>
+              <div class="ui-g-9">
+                <input type="text" name="nickname" [(ngModel)]="updatedUser.nickname"
+                       #nickname="ngModel" maxlength="40" placeholder="{{currentUser.nickname}}"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="genders">
+              <div class="ui-g">
+                <div class="ui-g-3">
+                  <h5>Gender: </h5>
+                </div>
+                <div class="ui-g-2">
+                  <label for="male">Male</label>
+                  <input type="radio" name="gender" id="male" value="male" [(ngModel)]="updatedUser.gender">
+                </div>
+                <div class="ui-g-3" style="padding-left: 20px;">
+                  <label for="female">Female</label>
+                  <input type="radio" name="gender" id="female" value="female" [(ngModel)]="updatedUser.gender">
+                </div>
+                <div class="ui-g-4">
+                  <label for="other">Rather Not Tell</label>
+                  <input type="radio" name="gender" id="other" value="other" [(ngModel)]="updatedUser.gender">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>Phone:</h5>
+              </div>
+              <div class="ui-g-9">
+                <input  type="tel" maxlength="11" name="phone" [(ngModel)]="updatedUser.phone"
+                       #phone="ngModel"/>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>Address:</h5>
+              </div>
+              <div class="ui-g-9">
+                <input type="text" name="address" [(ngModel)]="updatedUser.address"
+                       #phone="ngModel" maxlength="150" placeholder="{{currentUser.address}}"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>Skills:</h5>
+              </div>
+              <div class="ui-g-9">
+                <input type="text" name="skills" [(ngModel)]="updatedUser.skills"
+                       #skills="ngModel" placeholder="{{currentUser.skills}}"/>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <div class="ui-g">
+              <div class="ui-g-6">
+                <button [disabled]="loading" class="button"><img *ngIf="loading"
+                                                                 src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                  Save
+                </button>
+              </div>
+              <div class="ui-g-6">
+                <button type="button" class="button" (click)="hideChildModal()">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

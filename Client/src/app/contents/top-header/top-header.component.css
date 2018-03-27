@@ -1,0 +1,74 @@
+.header{
+  background-color: #00aa90;
+  width: 100%;
+  height: 65px;
+  padding-right:40px;
+}
+.title-wrapper:hover{
+  cursor: pointer;
+}
+.title-img-wrapper{
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+.title-img-wrapper img{
+    height: 50px;
+    width: 50px;
+}
+.title{
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+.title h3{
+    font-size: 25px;
+    padding-top: 15px;
+    color: white;
+    cursor: default;
+}
+.header-btn{
+    width:200px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+    right: 0px;
+}
+.header-btn button{
+  display: block;
+  margin:auto;
+  background-color: #00aa90;
+  color:white;
+  text-shadow:none !important;
+  border-width: 0;
+  box-shadow:none !important;
+  padding-top: 10px;
+  font-size: 25px ;
+  cursor: pointer;
+  outline: none;
+  width:150px;
+  transition: all 0.5s;
+}
+button span{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+}
+button span::after{
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+button:hover span{
+    padding-right: 25px;
+}
+button:hover span::after{
+    opacity: 1;
+    right: 0;
+}

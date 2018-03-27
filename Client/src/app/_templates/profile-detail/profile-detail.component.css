@@ -1,0 +1,45 @@
+
+.content-body{
+  width:800px;
+  padding-left:50px;
+}
+
+.content-body{
+  width:800px;
+  padding-left:50px;
+}
+
+.header{
+  padding-top:20px;
+}
+
+
+
+.header .ui-g-8 h2{
+  text-align: center;
+}
+
+
+hr{
+  border: 3px solid #00aa90;
+  background-color: #00aa90;
+}
+
+.editButton .button{
+  border: none;
+  background-color: #00aa90;
+  text-align: center;
+  padding: 0;
+  outline: none;
+  color: white;
+  width: 110px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 5%;
+  cursor: pointer;
+}
+.editButton .button:hover {
+  cursor:pointer;
+  background-color: #00aa70;
+}
+

@@ -1,0 +1,75 @@
+<div class="content-body">
+  <div class="header">
+    <div class="search-bar">
+      <!--
+      <form name="form" (ngSubmit)="f.form.valid && updateNote()" #f="ngForm">
+        <div class="ui-g">
+          <div class="ui-g-2">
+            <h5>I provide? <br> I need?</h5>
+          </div>
+          <div class="ui-g-9">
+            <div class="form-group">
+              <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="status" [(ngModel)]="currentUser.note"
+                     #status="ngModel" maxlength="100" [placeholder]=" 'Type your need or your service here so that others can see.'"/>
+            </div>
+          </div>
+          <div class="ui-g-1">
+            <button class="submit"><i class="fa fa-hand-peace-o " aria-hidden="true"></i></button>
+          </div>
+        </div>
+        <div class="info-bar">
+          <div class="info" *ngIf="noteUpdated">
+            <h1>Status Updated!</h1>
+          </div>
+        </div>
+      </form>-->
+    </div>
+  </div>
+  <div class="body">
+    <div class="ui-g">
+      <div class="ui-g-6">
+        <div class="mission-btn">
+          <button class="button" (click)="toMissionSearch()"><i class="fa fa-search" aria-hidden="true"></i> Search Missions
+          </button>
+        </div>
+      </div>
+      <div class="ui-g-6">
+        <div class="mission-btn">
+          <button class="button" (click)="createNewMission()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Create New Mission
+          </button>
+        </div>
+      </div>
+      <div class="ui-g-12">
+        <div class="list-title">
+          <h4>Missions may interest you.</h4>
+        </div>
+      </div>
+    </div>
+    <hr class="style1">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <div class="mission-list">
+          <ul slimScroll background="#333"
+              opacity="0.6"
+              position="right"
+              width="7px"
+              border-radius="5px">
+            <!--display requesting and recruiting mission in reversed order-->
+            <div *ngFor="let mission of missionsNearby | orderbyReverse">
+              <!--display the missions which are still recruiting people-->
+              <div *ngIf="mission.status===0||mission.status===1">
+                <app-mission-brief [mission] = "mission"  >
+                </app-mission-brief>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

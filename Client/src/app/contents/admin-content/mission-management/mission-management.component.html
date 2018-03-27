@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let mission of missions">
+      {{mission.title}} {{mission._id}} {{mission.status}}
+      - <a (click)="deleteMission(mission)">Delete</a>
+    </li>
+</ul>

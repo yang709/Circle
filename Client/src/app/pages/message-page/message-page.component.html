@@ -1,0 +1,23 @@
+<html>
+<header>
+  <app-top-header></app-top-header>
+</header>
+<body>
+<div class="ui-g">
+  <div class="ui-g-4">
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="ui-g-8">
+    <h2>Demo: NgZone</h2>
+
+    <p>Progress: {{progress}}%</p>
+    <p *ngIf="progress >= 100">Done processing {{label}} of Angular zone!</p>
+
+    <button (click)="processWithinAngularZone()">Process within Angular zone</button>
+    <button (click)="processOutsideOfAngularZone()">Process outside of Angular zone</button>
+  </div>
+</div>
+
+</body>
+
+</html>

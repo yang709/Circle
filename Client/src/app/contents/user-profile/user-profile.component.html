@@ -1,0 +1,82 @@
+<div class="content-body" >
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="backToHome()"></i>
+      </div>
+      <div class="ui-g-8">
+        <h2>My Profile</h2>
+      </div>
+      <div class="ui-g-2">
+        <div class="editProfileBtn">
+          <app-edit-profile (toRefresh)="toRefresh($event)" ></app-edit-profile>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="body">
+    <div class="ui-g">
+      <div class="ui-g-6">
+        <h4>Username(Email):</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{currentUser.email}}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Account Type:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.accountType }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>First Name:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.firstName }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Last Name:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.lastName }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Nickname:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.nickname }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Gender:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.gender }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Birthday:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ birthday }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Phone Number:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.phone }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Address:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.address }}</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>Skills:</h4>
+      </div>
+      <div class="ui-g-6">
+        <h4>{{ currentUser.skills }}</h4>
+      </div>
+    </div>
+  </div>
+</div>

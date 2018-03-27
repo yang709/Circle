@@ -1,0 +1,51 @@
+<div class="content-body">
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="backToMyContact()"></i>
+      </div>
+      <div class="ui-g-8">
+        <h2>Search Contacts</h2>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="body">
+    <div class="search-bar">
+      <form name="form" (ngSubmit)="f.form.valid && searchContact()" #f="ngForm">
+        <div class="ui-g">
+          <div class="ui-g-11">
+            <div class="form-group">
+              <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="search-bar"
+                     [(ngModel)]="searchContacts"
+                     #search="ngModel" maxlength="100" placeholder="Find contacts by email" required/>
+            </div>
+          </div>
+          <div class="ui-g-1">
+            <button class="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="search-res">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <div class="search-display" *ngIf="searched">
+            <div class="ui-g">
+              <div class="ui-g-12">
+                <app-profile-brief [user]="searchRes"></app-profile-brief>
+              </div>
+            </div>
+          </div>
+          <div class="search-display" *ngIf="searchErr">
+            <ngb-alert type="warning" [dismissible]="false">Cannot find this user...</ngb-alert>
+          </div>
+          <div class="search-display" *ngIf="searchMyself">
+            <ngb-alert type="warning" [dismissible]="false">You are searching yourself...</ngb-alert>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

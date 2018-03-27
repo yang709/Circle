@@ -1,0 +1,141 @@
+<div class="content-body">
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="backToHome()"></i>
+      </div>
+      <div class="ui-g-10">
+        <h2>Post New Mission</h2>
+      </div>
+    </div>
+  </div>
+  <hr class="style1">
+  <form name="form" (ngSubmit)="checkDate() && f.form.valid && submit()" #f="ngForm">
+    <div class="body">
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !title.valid }">
+        <div class="ui-g">
+          <div class="ui-g-2" style="padding-top: 18px;">
+            <h5>Title</h5>
+          </div>
+          <div class="ui-g-10">
+            <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="title" [(ngModel)]="mission.title"
+                   #title="ngModel" maxlength="100" required/>
+          </div>
+        </div>
+        <div class="md-errors-spacer" [hidden]=" !f.submitted || title.valid">
+          <div class="md-char-counter" *ngIf="title.errors && title.errors.required">
+            <ngb-alert type="danger" [dismissible]="false">Title cannot be empty</ngb-alert>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="ui-g">
+          <div class="ui-g-2">
+            <h6>Start Date&Time</h6>
+          </div>
+          <div class="ui-g-4">
+            <p-calendar [(ngModel)]="mission.startDate" name="startDate" [minDate]="minDate" [maxDate]="maxDate"
+                        [showTime]="true" [showIcon]="true" [hourFormat]="hf" #startDate="ngModel"
+                        readonlyInput="true"></p-calendar>
+          </div>
+          <div class="ui-g-2">
+            <h6>End Date&Time</h6>
+          </div>
+          <div class="ui-g-4">
+            <p-calendar [(ngModel)]="mission.endDate" name="endDate" [minDate]="mission.startDate" [maxDate]="maxDate"
+                        [showTime]="true" [showIcon]="true" [hourFormat]="hf" #endDate="ngModel"
+                        readonlyInput="true"></p-calendar>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="ui-g">
+          <div class="ui-g-2" style="padding-top: 10px">
+            <h5>Urgency</h5>
+          </div>
+          <div class="ui-g-2">
+            <label>
+              <input type="radio" name="urgency" [(ngModel)]="mission.urgency" [value]="urgencies[0].value">
+              {{urgencies[0].display}}
+            </label>
+          </div>
+          <div class="ui-g-2">
+            <label>
+              <input type="radio" name="urgency" [(ngModel)]="mission.urgency" [value]="urgencies[1].value">
+              {{urgencies[1].display}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !location.valid }">
+        <div class="ui-g">
+          <div class="ui-g-2" style="padding-top: 18px;">
+            <h5>Location</h5>
+          </div>
+          <div class="ui-g-10">
+            <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="location" [(ngModel)]="mission.location"
+                   #location="ngModel" required/>
+          </div>
+        </div>
+        <div class="md-errors-spacer" [hidden]=" !f.submitted || location.valid">
+          <div class="md-char-counter" *ngIf="location.errors && location.errors.required">
+            <ngb-alert type="danger" [dismissible]="false">Location cannot be empty</ngb-alert>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !maxAcceptor.valid }">
+        <div class="ui-g">
+          <div class="ui-g-3">
+            <h5 style="padding-top: 5px;">People Needed:</h5>
+          </div>
+          <div class="ui-g-3">
+            <input type="number" class="form-control mr-sm-2 mb-2 mb-sm-0" name="maxAcceptor"
+                   [(ngModel)]="mission.maxAcceptor"
+                   #maxAcceptor="ngModel" placeholder="People Needed" #maxAcceptor="ngModel" min="1" max="10000"/>
+          </div>
+          <div class="ui-g-3">
+            <h5 style="padding-top: 5px;">Reward Coins:</h5>
+          </div>
+          <div class="ui-g-3">
+            <input type="number" class="form-control mr-sm-2 mb-2 mb-sm-0" placeholder="0" name="payment"
+                   [(ngModel)]="mission.payment" #payment="ngModel" (keyup)="restrictPayment($event)" (blur)="restrictPayment($event)">
+          </div>
+          <div class="ui-g-6">
+            <div class="md-errors-spacer" [hidden]=" !f.submitted || maxAcceptor.valid">
+              <div class="md-char-counter" *ngIf="maxAcceptor.errors && maxAcceptor.errors?.min">
+                <ngb-alert type="danger" [dismissible]="false">At least 1 acceptor.</ngb-alert>
+              </div>
+              <div class="md-char-counter" *ngIf="maxAcceptor.errors && maxAcceptor.errors?.max">
+                <ngb-alert type="danger" [dismissible]="false">Max is 10000.</ngb-alert>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="style2">
+      <div class="form-group">
+        <div class="ui-g">
+          <div class="ui-g-2">
+            <h5>Description</h5>
+          </div>
+          <div class="ui-g-12">
+            <p-editor [(ngModel)]="mission.description" name="description" [style]="{'height':'150px'}"></p-editor>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="ui-g">
+        <div class="ui-g-6">
+          <button [disabled]="loading" class="submit"><img *ngIf="loading"
+                                                           src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+            Submit
+          </button>
+        </div>
+        <div class="ui-g-6">
+          <button class="cancel" (click)="backToHome()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<div class="comment-template" style="border-left: 2px solid lightblue;border-right: 2px solid lightblue; border-top: 1px solid lightblue; border-bottom: 1px solid lightblue">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <div class="content-body">
+        <div class="ui-g">
+          <div class="ui-g-2">
+            <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+          </div>
+          <div class="ui-g-10">
+            <div class="ui-g-1" style="height: 15px;">
+              <div class="poster-nickname">
+                <h6>{{comment.posterNickname}}</h6>
+              </div>
+            </div>
+            <div class="ui-g-12">
+              <div class="comment-content" [innerHtml]=comment.content style="text-align: left">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-g-4">
+      <div class="post-date" style="text-align: end">
+      {{postDate}}
+      </div>
+      <div class="rep-btn" style="text-align: end; margin-top: 8px">
+        <i class="fa fa-reply" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</div>

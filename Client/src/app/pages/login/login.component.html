@@ -1,0 +1,130 @@
+<html>
+<head>
+</head>
+
+<body>
+<div class="body-container"></div>
+<!--used to adjust background of the body-->
+<div class="header-wrapper">
+  <div class="d-flex justify-content-end">
+    <div class="mr-auto p-2">
+      <div class="logo-title">
+        <img src="../../assets/images/smile_green.png">
+      </div>
+      <div class="logo-title">
+        <div class="title">
+          <h3>CIRCLE</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-2">
+      <div class="question">
+        Don't have an account?
+      </div>
+    </div>
+    <div class="p-2">
+      <div class="signUpBtn" (click)="openSignUp()">
+        <app-usersignup></app-usersignup>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body-wrapper">
+  <div class="d-flex justify-content-end">
+    <div class="mr-auto p-2">
+      <!--<div class="video-title">See Our Intro Video</div>-->
+      <div class="video-wrapper">
+        <video src="../../../assets/videos/circle.mp4" height="100%" width="100%" class="embed-responsive-item" controls
+               onclick="this.paused ? this.play() : this.pause();">
+          HTML5 Video is required for this example
+        </video>
+      </div>
+      <div class="About-us">
+        <h4>Read our <a href="../../../assets/docs/circlematchbox.pdf">business plan </a> and follow us on our <a href="https://www.facebook.com/CircleNetLife/">Facebook</a></h4>
+        <h4>We have created a <a href="https://www.facebook.com/groups/305021126626348/?source_id=770678863106729">Facebook group</a> for our future users!</h4>
+        <h4 style="color: red">Note: This website is still in development. All the data will be removed before it is officially online. You are welcomed to join us on our <a href="https://www.facebook.com/groups/305021126626348/?source_id=770678863106729">Facebook group</a> if you need any help now.</h4>
+      </div>
+    </div>
+    <div class="p-2">
+
+      <div class="login-wrapper">
+        <div class="profile-image">
+          <img src="../../assets/images/profile-green.png">
+        </div>
+        <form name="form" (ngSubmit)="f.form.valid && logIn()" #f="ngForm" novalidate>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel"
+                   placeholder="Email Address"
+                   required/>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel"
+                   placeholder="Password"
+                   required/>
+          </div>
+          <div class="form-group">
+            <div class="d-flex justify-content-center">
+              <button [disabled]="loading" class="logInBtn">Login</button>
+            </div>
+            <div class="errors">
+              <div *ngIf="f.submitted && !email.valid" style="padding-top: 7px" >
+                <ngb-alert type="danger" [dismissible]="false" >Email is required.</ngb-alert>
+              </div>
+              <div *ngIf="f.submitted && email.valid && !password.valid" style="padding-top: 7px">
+                <ngb-alert type="danger" [dismissible]="false" >Password is required.</ngb-alert>
+              </div>
+              <div *ngIf="f.submitted && email.valid && password.valid && alertBelong">
+                <app-alert></app-alert>
+              </div>
+            </div>
+          </div>
+        </form>
+        <hr>
+        <div class="media-login">
+          <a href="#">Forget password? </a>Or Log in with
+          <div class="media-button">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <a href="#"><img src="../../assets/images/facebook-icon.png"></a>
+                </div>
+                <div class="col">
+                  <a href="#"><img src="../../assets/images/twitter-icon.png"></a>
+                </div>
+                <div class="col">
+                  <a href="#"><img src="../../assets/images/wechat-icon.png"></a>
+                </div>
+                <div class="col">
+                  <a href="#"><img src="../../assets/images/weibo-icon.png"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-wrapper">
+  <div class="d-flex justify-content-start">
+    <!--<div class="p-2">
+
+    </div>-->
+    <div class="ml-auto p-2">
+      <div class="copyright">
+        <h4>&copy; Circle 2017</h4>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+
+
+
+
+

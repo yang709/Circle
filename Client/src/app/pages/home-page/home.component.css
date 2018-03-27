@@ -1,0 +1,15 @@
+html{
+  background-color: #e6e6e6;
+  height: auto;
+}
+.nav-bar{
+  height:865px;
+}
+body{
+  margin-left: auto;
+  margin-right: auto;
+  height:865px;
+  max-width: 1366px;
+}
+
+

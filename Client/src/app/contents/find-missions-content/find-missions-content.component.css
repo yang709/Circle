@@ -1,0 +1,74 @@
+ul{
+  padding-left: 0px;
+  margin-left:10px;
+  width: 700px;
+  height: auto;
+  max-height: 500px;
+}
+
+.mission-list{
+  width:720px;
+}
+
+
+.header i:hover{
+  color:#00aa90;
+  cursor: pointer;
+}
+
+.content-body{
+  width:800px;
+  padding-left:50px;
+}
+
+.header{
+  padding-top:20px;
+}
+
+
+hr{
+  border: 3px solid #00aa90;
+  background-color: #00aa90;
+}
+.header .ui-g-8 h2{
+  text-align: center;
+}
+.body h4{
+  margin-bottom: 15px;
+}
+/*
+.header .ui-g {
+  height:50px;
+
+}
+.search-bar .ui-g {
+  height:50px;
+}*/
+
+.search-bar .ui-g-11{
+  padding-right:0px;
+}
+.search-bar .ui-g-1{
+  padding-left:0px;
+}
+.search-bar .ui-g-1 button{
+  border: none;
+  background-color: #00aa90;
+  height:50px;
+  width:54px;
+  color: white;
+}
+.search-bar .ui-g-1 button:hover{
+  cursor: pointer;
+  background-color: #00aa30;
+}
+.search-bar input{
+  border: none;
+  border-radius: 0%;
+  background-color: lightblue;
+  height:50px;
+  padding-left:22px;
+}
+.search-bar input::placeholder{
+  color: #666666;
+}

@@ -1,0 +1,50 @@
+<div class="content-body">
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="backToHome()"></i>
+      </div>
+      <div class="ui-g-8">
+        <h2>My Contacts</h2>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="body">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <div class="find-contacts-btn">
+          <button class="button" (click)="toFindContacts()"><i class="fa fa-plus" aria-hidden="true"></i> Search
+            Contacts
+          </button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="myContacts">
+      <div class="contacts" *ngIf="hasContacts">
+        <div class="ui-g">
+          <div class="ui-g-12">
+            <div class="contact-list">
+              <ul slimScroll background="#333"
+                  opacity="0.6"
+                  position="right"
+                  width="7px"
+                  border-radius="5px">
+                <!--TODO: Should add order pipe here, by lexicographical order-->
+                <div *ngFor="let contact of myContacts">
+                  <app-profile-brief [user]="contact">
+                  </app-profile-brief>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contacts" *ngIf="!hasContacts">
+        It seems you do not have any contact yet, go and find some!
+      </div>
+    </div>
+  </div>
+</div>

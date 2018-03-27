@@ -1,0 +1,12 @@
+.brief {
+  margin-right:15px;
+  margin-bottom: 10px;
+}
+.brief:hover{
+  background-color: #00aa90;
+  color:white;
+  cursor: pointer;
+}
+.ui-g {
+  margin-bottom:10px;
+}

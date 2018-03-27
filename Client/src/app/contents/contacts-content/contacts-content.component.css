@@ -1,0 +1,45 @@
+.header i:hover{
+  color:#00aa90;
+  cursor: pointer;
+}
+
+.content-body{
+  width:800px;
+  padding-left:50px;
+}
+
+.header{
+  padding-top:20px;
+}
+
+
+
+.header .ui-g-8 h2{
+  text-align: center;
+}
+
+
+.find-contacts-btn button{
+  width:100%;
+  max-width:734px;
+  height:40px;
+  background-color: #00aa90;
+  color: white;
+  border:none;
+}
+
+hr{
+  border: 3px solid #00aa90;
+  background-color: #00aa90;
+}
+
+.body h4{
+  margin-bottom: 15px;
+}
+ul{
+  padding-left: 0px;
+  margin-left:10px;
+  width: 700px;
+  height: auto;
+  max-height: 500px;
+}

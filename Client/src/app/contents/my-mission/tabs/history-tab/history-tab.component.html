@@ -1,0 +1,20 @@
+<div class="posted">
+  <!--<button type="button" (click)="Refresh()">Refresh My Posts</button>-->
+  <ul slimScroll background="#333"
+      opacity="0.6"
+      position="right"
+      width="7px"
+      border-radius="5px"
+  >
+    <app-mission-brief *ngFor="let mission of historyMissions"
+                       [mission]="mission">
+    </app-mission-brief>
+    <button>More missions</button>
+  </ul>
+  <!--<ul>x
+    <li *ngFor="let mission of missions">
+      {{mission.title}n} {{mission._id}}
+    </li>
+  </ul>-->
+
+</div>

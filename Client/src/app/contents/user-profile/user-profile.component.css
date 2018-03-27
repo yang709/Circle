@@ -1,0 +1,72 @@
+.content-body{
+  width:800px;
+  padding-left:50px;
+}
+
+.header{
+  padding-top:20px;
+}
+
+
+
+.header .ui-g-8 h2{
+  text-align: center;
+}
+
+.header i:hover{
+  color:#00aa90;
+  cursor: pointer;
+}
+
+hr{
+  border: 3px solid #00aa90;
+  background-color: #00aa90;
+}
+
+.body h4{
+  margin-bottom: 15px;
+}
+
+
+
+/*
+th{
+  font-size: 25px;
+  height:70px;
+  font-weight: normal;
+}*/
+/*
+.return-Button{
+  outline: none;
+  background-color: white;
+  color: grey;
+  border: none;
+  text-align: center;
+  font-size: 25px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 20px 0 0 20px;
+
+}
+.return-Button span{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.return-Button span:after{
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+.return-Button:hover span{
+  padding-left: 25px;
+}
+.return-Button:hover span:after{
+  opacity: 1;
+  left: 0;
+}
+*/

@@ -1,0 +1,167 @@
+<div class="signUpBtn">
+  <button class="button" (click)="showChildModal()">Get Started</button>
+</div>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Get Ready, Circle Your Life</h4>
+        <!--
+        <button type="button" class="close pull-right" (click)="hideChildModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        -->
+      </div>
+      <div class="header-alert" *ngIf="alertBelong">
+        <div class="md-errors-spacer"
+             [hidden]=" !f.submitted || (firstName.valid && lastName.valid && validDate && email.valid && password.valid && passwordConfirm.valid)">
+          <div class="md-char-counter" *ngIf="firstName.errors && firstName.errors.required">
+            <ngb-alert type="danger" [dismissible]="false">First Name is required.</ngb-alert>
+          </div>
+          <div class="md-char-counter" *ngIf="!firstName.errors && lastName.errors && lastName.errors.required">
+            <ngb-alert type="danger" [dismissible]="false">Last Name is required.</ngb-alert>
+          </div>
+          <div class="md-char-counter" *ngIf="!lastName.errors&&!firstName.errors && !validDate">
+            <ngb-alert type="danger" [dismissible]="false">Birthday is not correct.</ngb-alert>
+          </div>
+          <div class="md-char-counter"
+               *ngIf="!lastName.errors&&!firstName.errors && validDate && email.errors && email.errors?.email">
+            <ngb-alert type="danger" [dismissible]="false">Email format is not correct...</ngb-alert>
+          </div>
+          <div class="md-char-counter"
+               *ngIf="!lastName.errors&&!firstName.errors && validDate && !email.errors && password.errors && password.errors.required">
+            <ngb-alert type="danger" [dismissible]="false">Password is required</ngb-alert>
+          </div>
+          <div class="md-char-counter"
+               *ngIf="!lastName.errors&&!firstName.errors  && !email.errors && validDate && password.errors && (password.errors.minlength || password.errors.maxlength)">
+            <ngb-alert type="danger" [dismissible]="false">Length of password should be between 6 to 24
+              characters.
+            </ngb-alert>
+          </div>
+          <div class="md-char-counter"
+               *ngIf="!lastName.errors&&!firstName.errors  && !email.errors && validDate && !password.errors && passwordConfirm.errors && passwordConfirm.errors?.equalTo">
+            <ngb-alert type="danger" [dismissible]="false">Password does not match...</ngb-alert>
+          </div>
+        </div>
+        <div class="md-char-counter"
+             *ngIf="!firstName.errors && !lastName.errors && validDate && !email.errors && !password.errors ">
+          <div class="signUpRes" *ngIf="signUpSuccess">
+            <ngb-alert type="success" [dismissible]="false">Registration Success!</ngb-alert>
+          </div>
+          <div class="signUpRes" *ngIf="!signUpSuccess">
+            <ngb-alert type="danger" [dismissible]="false">{{signUpErr}}</ngb-alert>
+          </div>
+        </div>
+      </div>
+
+      <form name="form" (ngSubmit)="f.form.valid && signUp()" #f="ngForm">
+        <div class="modal-body">
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>First Name:</h5>
+              </div>
+              <div class="ui-g-9" style="padding-top: 6px">
+                <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="firstName"
+                       [(ngModel)]="user.firstName"
+                       #firstName="ngModel" placeholder="Legal First name" required/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>Last Name:</h5>
+              </div>
+              <div class="ui-g-9" style="margin-top: 2px">
+                <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="lastName" [(ngModel)]="user.lastName"
+                       #lastName="ngModel" placeholder="Legal Last Name" required/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !validDate }">
+            <div class="ui-g">
+              <div class="ui-g-3"><h5>Birthday:</h5></div>
+              <div class="ui-g-9" style="padding-top: 10px">
+                <p-calendar name="date" [(ngModel)]="user.birthday" #birthday="ngModel" [showIcon]="true"
+                            placeholder="Legal birthday" required (onSelect)="checkBirthday()"
+                            (onInput)="checkBirthday()" [minDate]="minDate" [maxDate]="maxDate" height="50px">
+                </p-calendar>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+            <div class="ui-g">
+              <div class="ui-g-3"><h5>Email:</h5></div>
+              <div class="ui-g-9">
+                <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="email" [(ngModel)]="user.email"
+                       #email="ngModel" ngControl="email" placeholder="Unchangeable Permanent Username" email/>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <div class="ui-g">
+              <div class="ui-g-3"><h5>Password:</h5></div>
+              <div class="ui-g-9">
+                <input type="password" class="form-control mr-sm-2 mb-2 mb-sm-0" name="password"
+                       [(ngModel)]="user.password"
+                       #password="ngModel" placeholder="6-24 characters" required minlength="6" maxlength="24"/>
+              </div>
+            </div>
+            <p></p>
+            <div class="ui-g">
+              <div class="ui-g-3">
+                <h5>Confirm Password</h5>
+              </div>
+              <div class="ui-g-9" style="padding-top: 18px">
+                <input type="password" class="form-control mr-sm-2 mb-2 mb-sm-0" name="passwordConfirm"
+                       [(ngModel)]="confirmPassword" #passwordConfirm="ngModel" placeholder="Confirm Password"
+                       [equalTo]="password"/>
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <div class="modal-footer">
+            <div class="container">
+              <div class="ui-g">
+                <div class="ui-g-1">
+                  <div class="check-box"
+                       style="height: 30px; width:30px;background-color: #00aa30; padding-left:4px;padding-top: 1px;">
+                    <p-checkbox [(ngModel)]="agreementChecked" binary="true" name="agreementCheck"></p-checkbox>
+                  </div>
+                </div>
+                <div class="ui-g-11">
+                  <h5>Please confirm your personal information and our <a routerLink="#">agreements</a>.</h5>
+                </div>
+                <div class="ui-g-3"></div>
+                <div class="ui-g-6">
+                  <p-captcha siteKey="6LdY-iwUAAAAAFRToIHaV4Tmp2pHYUSm-iDIgYmn
+" (onResponse)="iamHuman($event)"></p-captcha>
+                </div>
+                <div class="ui-g-3">
+                </div>
+                <div class="ui-g-6">
+                  <button [disabled]="loading" class="submit"><img *ngIf="loading"
+                                                                   src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                    Sign Up
+                  </button>
+                </div>
+                <div class="ui-g-6">
+                  <button type="button" class="button close-but" (click)="hideChildModal()">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

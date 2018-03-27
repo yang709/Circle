@@ -1,0 +1,12 @@
+<div class="posted">
+  <ul slimScroll background="#333"
+      opacity="0.6"
+      position="right"
+      width="7px"
+      border-radius="5px"
+  >
+    <app-mission-brief *ngFor="let mission of acceptedMissions"
+                       [mission]="mission">
+    </app-mission-brief>
+  </ul>
+</div>

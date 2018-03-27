@@ -1,0 +1,52 @@
+<div class="content-body">
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="backToHome()"></i>
+      </div>
+      <div class="ui-g-8">
+        <h2>Search Missions</h2>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="body">
+    <div class="search-bar">
+      <form name="form" (ngSubmit)="f.form.valid && searchMissionByTitleAndTags()" #f="ngForm">
+        <div class="ui-g">
+          <div class="ui-g-11">
+            <div class="form-group">
+              <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" name="search-bar"
+                     [(ngModel)]="searchTitleAndTags"
+                     #TitleAndTags="ngModel" maxlength="150" placeholder="Search Missions by (part of) title or tag" required/>
+            </div>
+          </div>
+          <div class="ui-g-1">
+            <button class="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <div class="mission-list">
+          <ul slimScroll background="#333"
+              opacity="0.6"
+              position="right"
+              width="7px"
+              border-radius="5px">
+            <!--display requesting and recruiting mission in reversed order-->
+            <div *ngFor="let mission of searchRes">
+              <!--display the missions which are still recruiting people-->
+              <div *ngIf="mission.status===0||mission.status===1">
+                <app-mission-brief [mission]="mission">
+                </app-mission-brief>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

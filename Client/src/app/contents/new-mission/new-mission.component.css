@@ -1,0 +1,60 @@
+.content-body{
+  width:800px;
+  padding-left:50px;
+}
+
+.header{
+  padding-top:20px;
+}
+
+.header h2{
+  padding-left:120px;
+}
+
+
+
+.header i:hover{
+  color:#00aa90;
+  cursor: pointer;
+}
+
+.footer .ui-g-6{
+  padding-left: 7%;
+}
+
+.footer button{
+  width:250px;
+  height:36px;
+  border-radius: 7px;
+  background-color: #00aa90;
+  color: white;
+  border:none;
+}
+
+
+hr.style1{
+  border: 3px solid #00aa90;
+  background-color: #00aa90;
+}
+
+hr.style2{
+  border-top: 2px solid lightgrey;
+  margin: 6px;
+}
+
+textarea{
+  width: 400px;
+  height: auto;
+}
+
+h5{
+  margin-bottom: 0;
+}
+h6{
+  margin-bottom: 0;
+}
+
+.form-group{
+  margin-bottom:6px;
+}
+

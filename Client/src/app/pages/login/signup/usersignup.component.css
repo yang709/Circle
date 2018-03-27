@@ -1,0 +1,122 @@
+.modal-content{
+  height: auto;
+}
+
+.modal-header h4{
+  padding-top: 20px;
+  padding-left: auto;
+  padding-right: auto;
+  font: 400 54px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: #00aa90;
+  text-shadow: 3px 3px 3px #fff;
+  width:inherit;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.modal-body{
+  height: 700px;
+  padding-top:0px;
+}
+
+.modal-body .ui-g-3{
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+.modal-body .ui-g-9 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.header-alert{
+  padding-left: 95px;
+  padding-right: 95px;
+  height:45px;
+}
+
+.form-group{
+ width: 80%;
+ height: 61px;
+ margin-left: 10%;
+
+}
+
+.form-group input{
+  height: 45px;
+  font-size: 24px;
+
+}
+
+.form-group h5{
+  padding-top: 15px;
+}
+
+.pwd-alert-wrapper{
+
+
+  height: 58px;
+}
+
+.signUpBtn button{
+  background-color: #00aa90;
+  color: white;
+  white-space: nowrap;
+  width: 200px;
+  height: 42px;
+  border: none;
+  font-size: 28px;
+  margin-top: 21px;
+  margin-right:20px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.signUpBtn button:hover{
+  background-color: #00aa30;
+}
+
+.signUpBtn button:focus{
+  outline: none;
+}
+
+
+
+.modal-footer .col{
+  align-items: center;
+}
+.modal-footer .close-but{
+  background-color: grey;
+}
+.modal-footer .close-but:hover{
+  background-color: lightgray;
+}
+.modal-footer .submit{
+  background-color: #00aa90;
+}
+.modal-footer{
+  text-align: center;
+  margin-top: 100px;
+}
+.modal-footer button{
+  display:block;
+  color: white;
+  white-space: nowrap;
+  width: 200px;
+  height: 50px;
+  border: none;
+  font-size:24px;
+  border-radius: 5px;
+  margin: 0 auto;
+  transition: background 0.3s ease-in-out;
+}
+.modal-footer .submit:hover{
+  background-color: #00aa30;
+}
+
+.modal-footer button:focus
+{
+  outline: none;
+}
+
+

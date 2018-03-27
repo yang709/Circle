@@ -1,0 +1,134 @@
+<div class="content-body">
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="back()"></i>
+      </div>
+      <div class="ui-g-6">
+        <h2>Mission Detail</h2>
+      </div>
+      <div class="ui-g-2">
+        <div class="status-btn-wrapper">
+          <div *ngIf="isPoster">
+            <button class="Accept-btn" style="background-color: crimson"><h5>Cancel</h5></button>
+          </div>
+        </div>
+      </div>
+      <div class="ui-g-2">
+        <div class="status-btn-wrapper">
+          <div *ngIf="canAccept&&!missionStarted">
+            <button class="Accept-btn" (click)="acceptMission()"><h5>Accept</h5></button>
+          </div>
+          <div *ngIf="isPoster&&!missionStarted">
+            <button class="Accept-btn"(click)="toCandidateList()"><h5>Candidates</h5></button>
+          </div>
+          <div *ngIf="!isPoster&&!canAccept&&!missionStarted">
+            {{statusDisplay}}
+          </div>
+          <div *ngIf="isPoster&&missionStarted">
+            {{statusDisplay}}
+          </div>
+        </div>
+        <ng-template #showAcceptBtn>
+
+        </ng-template>
+        <ng-template #checkStatus>
+          <div *ngIf="!missionStarted && isPoster; then showCandidateBtn else showStatus"></div>
+          <ng-template #showCandidateBtn>
+
+          </ng-template>
+          <ng-template #showStatus>
+
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <hr class="style1">
+  <body>
+  <div class="title">
+    <div class="ui-g">
+      <div class="ui-g-8">
+        <div class="line1">
+          <h3>{{currentMission.title}}</h3>
+        </div>
+        <div class="line2">
+          <div class="ui-g">
+            <div class="ui-g-3" style="padding-right:0px">
+              <h6>Posted by: </h6>
+            </div>
+            <div class="ui-g-4" style="padding-left:0px">
+              <h6 (click)="toPosterProfile()">{{poster.nickname}}</h6>
+            </div>
+            <div class="ui-g-5">
+              <h6>{{duration}}</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="ui-g-4">
+        Put poster's portrait here.
+      </div>
+    </div>
+  </div>
+  <hr class="style2">
+  <div class="Info">
+    <div class="ui-g">
+      <div class="ui-g-6">
+        <h6>&bull; Need {{currentMission.maxAcceptor}} people.</h6>
+      </div>
+      <div class="ui-g-6">
+        <h6>&bull; <b>From</b> {{startDate}} <b>To</b> {{endDate}}</h6>
+      </div>
+      <div class="ui-g-6">
+        <h6>&bull; {{payment}} </h6>
+      </div>
+      <div class="ui-g-6">
+        <h6>&bull; {{urgency}}</h6>
+      </div>
+      <div class="ui-g-12">
+        <h6>&bull; {{currentMission.location}}</h6>
+      </div>
+      <hr class="style2">
+      <div class="ui-g-12">
+        <div class="description">
+          <h5>Description:</h5>
+          <div class="description-wrapper">
+            <div class="description-content" [innerHtml]=currentMission.description slimScroll background="#333"
+                 opacity="0.6"
+                 position="right"
+                 width="7px"
+                 border-radius="5px"
+                 style="margin: 0px 0px; width: 700px; height: auto; max-height: 150px">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  <hr class="style3">
+  <footer>
+    <div class="show-comments">
+      <p-accordion>
+        <p-accordionTab header="Show Comments" slimScroll background="#333"
+                        opacity="0.6"
+                        position="right"
+                        width="7px"
+                        border="0px" style="margin: 0px 0px; width: 700px; height: auto; max-height: 150px">
+
+          <app-comment-template *ngFor="let comment of currentMission.comments"
+                                [comment]="comment">
+          </app-comment-template>
+
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+    <div class="new-comment">
+      <p-editor [(ngModel)]="myComment" [style]="{'height': '50px'}"></p-editor>
+      <button class="comment-submit" (click)="submitComment()">Submit</button>
+    </div>
+  </footer>
+
+</div>

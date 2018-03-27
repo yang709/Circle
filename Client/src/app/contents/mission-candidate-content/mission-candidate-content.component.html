@@ -1,0 +1,43 @@
+<div class="content-body">
+  <div class="header">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+        <i class="fa fa-chevron-left" aria-hidden="true" (click)="backToHome()"></i>
+      </div>
+      <div class="ui-g-8">
+        <h2>Candidate Lists</h2>
+      </div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="ui-g">
+      <div class="ui-g-2" style="padding-top: 15px">
+      </div>
+      <div class="ui-g-10">
+        <nav nav-tabs class="nav nav-tabs justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">Waiting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Invited</a>
+          </li>
+        </nav>
+      </div>
+    </div>
+
+    <div class="tab-content card" style="margin-left:20px; border: 2px solid;border-color: #00aa30">
+      <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+        <br>
+        <app-waitlist-tab></app-waitlist-tab>
+      </div>
+
+      <div class="tab-pane fade" id="panel2" role="tabpanel">
+        <br>
+        <app-invited-tab></app-invited-tab>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+

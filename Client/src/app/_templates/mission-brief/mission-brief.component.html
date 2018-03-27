@@ -1,0 +1,18 @@
+<ng-container *ngIf="!deleted">
+<div class='brief' (click)="toDetail()">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <div class="row1">
+        <h3>{{mission.title}}</h3>
+      </div>
+      <div class="row2">
+        {{duration }}
+      </div>
+    </div>
+    <div class="ui-g-4">
+      <h3> {{status}}</h3>
+    </div>
+  </div>
+</div>
+<hr>
+</ng-container>

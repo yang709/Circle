@@ -1,0 +1,12 @@
+<div class="posted">
+  <ul slimScroll background="#333"
+      opacity="0.6"
+      position="right"
+      width="7px"
+      border-radius="5px"
+  >
+    <app-profile-brief *ngFor="let user of candidates"
+                       [user]="user" [relatedMission]="currentMission" [invitedStatus]="'waitList'" (getMissionChange)="onMissionChange($event)">
+    </app-profile-brief>
+  </ul>
+</div>
